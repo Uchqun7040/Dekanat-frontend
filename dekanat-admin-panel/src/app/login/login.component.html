@@ -1,0 +1,49 @@
+<!-- <form class="form-signin" #f="ngForm" (ngSubmit)="signIn(f.value)">
+    <h2 class="form-signin-heading">Iltimos, kiring</h2>
+    <div *ngIf="invalidLogin" class="alert alert-danger">{{errorMessage}}</div>
+    <label for="inputLogin" class="sr-only">Login</label>
+    <input type="input" id="inputLogin" name="login" ngModel class="form-control" placeholder="Login" required autofocus>
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" id="inputPassword" name="password" ngModel class="form-control" placeholder="Parol" required>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Kirish</button>
+</form> -->
+
+<!-- <div class="yuza"> -->
+  <div *ngIf="invalidLogin" class="alert alert-danger" id="alert">{{errorMessage}}</div>
+  <div class="container">
+    <div class="screen">
+      <div class="screen__content">
+        <img src="../../assets/logo.png" alt="" width="160px" style="margin-top: 70px;margin-left: 30px;">
+        <form class="login" #f="ngForm" (ngSubmit)="signIn(f.value)">
+          <div class="login__field">
+            <i class="login__icon fas fa-user"></i>
+            <input type="input" class="login__input" id="inputLogin" name="login" ngModel placeholder="Login / ID" required autofocus>
+          </div>
+          <div class="login__field">
+            <i class="login__icon fas fa-lock"></i>
+            <input type="password" id="inputPassword" name="password" ngModel class="login__input" id="password" placeholder="Parol" required>
+          </div>
+
+          <button class="button login__submit btn_print" type="submit">
+            <span class="button__text">Kirish</span>
+            <i class="button__icon fas fa-chevron-right"></i>
+          </button>
+        </form>
+        <div class="social-login">
+          <h3 id="tarmoq">Ijtimoiy tarmoqlarda</h3>
+          <div class="social-icons">
+            <a href="#" class="social-login__icon fab fa-instagram"></a>
+            <a href="#" class="social-login__icon fab fa-facebook"></a>
+            <a href="http://t.me/qardu.uz" class="social-login__icon fab fa-telegram"></a>
+          </div>
+        </div>
+      </div>
+      <div class="screen__background">
+        <span class="screen__background__shape screen__background__shape4"></span>
+        <span class="screen__background__shape screen__background__shape3"></span>
+        <span class="screen__background__shape screen__background__shape2"></span>
+        <span class="screen__background__shape screen__background__shape1"></span>
+      </div>
+    </div>
+  </div>
+<!-- </div> -->

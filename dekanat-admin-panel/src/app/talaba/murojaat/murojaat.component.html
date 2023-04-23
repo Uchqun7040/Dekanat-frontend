@@ -1,0 +1,95 @@
+<!-- <h1 *ngIf="talaba">Salom {{talaba.ism}}</h1> -->
+<div id="cont">
+<mat-tab-group>
+  <mat-tab label="Murojaatlarim">
+    <h2 style="padding-top: 80px; text-align: center;">Murojaatlar</h2>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef class="ustun">ID</th>
+        <td mat-cell *matCellDef="let element">{{element.id}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="oqituvchi">
+        <th mat-header-cell *matHeaderCellDef class="ustun">O'qituvchi</th>
+        <td mat-cell *matCellDef="let element">{{element.oqituvchi.familiya+" "+element.oqituvchi.ism}}</td>
+      </ng-container>
+      <ng-container matColumnDef="mavzu">
+        <th mat-header-cell *matHeaderCellDef class="ustun">Murojaat turi</th>
+        <td mat-cell *matCellDef="let element">{{element.mavzu}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="vaqt">
+        <th mat-header-cell *matHeaderCellDef class="ustun">Murojaat vaqti</th>
+        <td mat-cell *matCellDef="let element" style="height: 10px;">{{element.created |
+          date:'d/M/yy,&nbsp;&nbsp;&nbsp;H:mm '}}</td>
+      </ng-container>
+      <ng-container matColumnDef="holat">
+        <th mat-header-cell *matHeaderCellDef class="ustun">Holat</th>
+        <td mat-cell *matCellDef="let element"
+          [style.color]="element.holat=='RAD_ETILDI' ? 'red': element.holat=='TASDIQLANDI' ? 'rgb(55, 202, 5)': 'rgb(255, 192, 1)'">
+          {{element.holat}}</td>
+      </ng-container>
+      <ng-container matColumnDef="download">
+        <th mat-header-cell *matHeaderCellDef class="ustun">Fayl</th>
+        <td mat-cell *matCellDef="let element">
+          <a class="download" mat-mini-fab color="primary" [attr.href]="'http://localhost:8080/api/file/download/'+element.fayl">
+            <mat-icon>download</mat-icon>
+          </a>
+        </td>
+      </ng-container>
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row (click)="openDialog(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+
+  </mat-tab>
+  <mat-tab label="Yangi murojaat" >
+    <div *ngIf="forAlert" class="alert alert-success alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      Murojaatingiz muvafaqqiyatli yuborildi!
+    </div>
+    <div class="container">
+      <h2 class="templete">
+        Yangi murojaat yuborish
+      </h2>
+
+      <form class="example-form login" [formGroup]="form" #f="ngForm" (ngSubmit)="send(f.value)">
+        <div id="select">
+          <span id="oqituvchiSelect">Qaysi o'qituvchi uchun: </span>
+          <mat-form-field appearance="fill">
+            <mat-label>O'qituvchi</mat-label>
+            <mat-select  formControlName="oqituvchi" required>
+              <mat-option>Bo'sh</mat-option>
+              <mat-option *ngFor="let oqituvchi of oqituvchilar" [value]="oqituvchi">{{oqituvchi.familiya}} {{oqituvchi.ism}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Murojaat turi</mat-label>
+          <input  matInput type="input" id="mavzu" name="mavzu" formControlName="mavzu"
+            placeholder="Ariza / Tushuntirish xati / ..." required>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Murojaat matni</mat-label>
+          <textarea matInput type="input" id="matn" name="matn" formControlName="matn" 
+            placeholder="Murojaat matnini kiriting..." required></textarea>
+        </mat-form-field>
+        <div class="buttons">
+          <button mat-raised-button color="warn" type="button" (click)="clear()">Tozalash</button>
+          <button mat-raised-button color="primary" type="submit">Yuborish</button>
+        </div>
+
+      </form>
+    </div>
+
+
+  </mat-tab>
+
+</mat-tab-group>
+</div>

@@ -1,0 +1,33 @@
+<mat-dialog-content class="mat-typography container">
+    <div id="temp">
+        Qarshi Davlat Universiteti Matematika va kompyuter ilmlari fakulteti dekani <span
+            id="oqituvchi">{{murojaat.oqituvchi.familiya}} {{murojaat.oqituvchi.ism}}</span> ga <span
+            id="talaba">{{murojaat.talaba.familiya}} {{murojaat.talaba.ism}}</span> nomidan
+    </div>
+
+    <div id="mavzu">{{murojaat.mavzu}}</div>
+    <div id="matn">
+        {{murojaat.matn}}
+    </div>
+    <div class="about">
+        Kimdan: <span>{{murojaat.talaba.familiya}} {{murojaat.talaba.ism}}</span>
+    </div>
+
+    <div class="about">
+        Murojaat holati: <span
+            [style.color]="murojaat.holat=='RAD_ETILDI' ? 'red': murojaat.holat=='TASDIQLANDI' ? 'rgb(55, 202, 5)': 'rgb(255, 192, 1)'">
+            {{murojaat.holat}}</span>
+    </div>
+    <div class="about">
+        Murojaat vaqti: {{date}}, {{time}}
+    </div>
+    <mat-chip-listbox aria-label="Status selection" [(ngModel)]="holat">
+        <mat-chip-option color="primary" value="TASDIQLANDI">Tasdiqlash</mat-chip-option>
+        <mat-chip-option color="accent" value="ORGANILMOQDA">O'rganilmoqda</mat-chip-option>
+        <mat-chip-option color="warn" value="RAD_ETILDI">Rad etish</mat-chip-option>
+    </mat-chip-listbox>
+    <textarea [(ngModel)]="xulosa" name="xulosa" id="xulosa" cols="50" rows="10" placeholder="Xulosangizni kiriting..."></textarea><br>
+    <button mat-raised-button mat-dialog-close color="warn" class="m-2">Bekor qilish</button>
+    <button mat-raised-button color="primary" (click)="saqlash()" [mat-dialog-close]="true" cdkFocusInitial>Saqlash</button>
+    
+</mat-dialog-content>

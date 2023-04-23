@@ -1,0 +1,35 @@
+#container{
+  padding: 20px 1%;
+}
+
+.demo-table {
+  max-width: 70%;
+}
+
+.mat-mdc-row .mat-mdc-cell {
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+  cursor: pointer;
+  max-width: 300px;
+  text-align: center;
+}
+
+.ustun{
+  text-align: center;
+}
+
+.mat-mdc-row:hover .mat-mdc-cell {
+  background-color: rgb(234, 245, 255);
+}
+.mat-mdc-row:active .mat-mdc-cell {
+  background-color: rgb(208, 255, 167);
+}
+
+.demo-row-is-clicked {
+  font-weight: bold;
+  color: rgb(55, 202, 5);
+}
+
+.download:hover{
+  color: white; 
+}

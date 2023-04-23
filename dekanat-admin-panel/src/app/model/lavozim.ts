@@ -1,0 +1,8 @@
+export enum Lavozim{
+    ADMIN="ADMIN",
+    DEKAN="DEKAN",
+    TALABA="TALABA",
+    MUDIR="MUDIR",
+    ZAMDEKAN="ZAMDEKAN",
+    OQITUVCHI="OQITUVCHI"
+}
