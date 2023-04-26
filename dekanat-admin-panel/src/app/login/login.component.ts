@@ -22,12 +22,8 @@ export class LoginComponent {
 
   signIn(credentials: any) {
     this.authService.login(credentials)
-      .subscribe(result => {
+      .subscribe(result => {        
         if(result.code === 200){
-          this.authService.getCurrentUser()
-          .subscribe((res: Talaba) =>{
-            console.log(res);
-          })
           let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
           this.router.navigate([returnUrl || '/talaba']);
         

@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, shareReplay } from 'rxjs';
-import { environment } from 'src/environment';
+import { environment } from 'src/environments/environment';
 import { Murojaat } from '../model/murojaat';
 import { CrudBaseService } from './crud-base.service';
 

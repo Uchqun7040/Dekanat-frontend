@@ -8,12 +8,12 @@
     <button class="btn btn-lg btn-primary btn-block" type="submit">Kirish</button>
 </form> -->
 
-<!-- <div class="yuza"> -->
+<div id="cont">
   <div *ngIf="invalidLogin" class="alert alert-danger" id="alert">{{errorMessage}}</div>
   <div class="container">
     <div class="screen">
       <div class="screen__content">
-        <img src="../../assets/logo.png" alt="" width="160px" style="margin-top: 70px;margin-left: 30px;">
+        <img src="assets/logo.png" alt="" width="160px" style="margin-top: 70px;margin-left: 30px;">
         <form class="login" #f="ngForm" (ngSubmit)="signIn(f.value)">
           <div class="login__field">
             <i class="login__icon fas fa-user"></i>
@@ -46,4 +46,4 @@
       </div>
     </div>
   </div>
-<!-- </div> -->
+</div>

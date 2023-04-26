@@ -66,6 +66,15 @@ export class JwtUtil {
         return true;
     }
 
+    getTalabaHemisId(){
+        let data = this.getData();
+
+        if (data.jti) {
+            return data.jti;
+        }
+        return null;
+    }
+
 }
 
 

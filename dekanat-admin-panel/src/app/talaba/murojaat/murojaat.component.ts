@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/auth.service';
+import { JwtUtil } from 'src/app/core/jwt.util';
 import { Murojaat } from 'src/app/model/murojaat';
 import { MurojaatHolat } from 'src/app/model/murojaatHolat';
 import { Oqituvchi } from 'src/app/model/oqituvchi';
@@ -9,7 +10,7 @@ import { Talaba } from 'src/app/model/talaba';
 import { MurojaatService } from 'src/app/service/murojaat.service';
 import { OqituvchiService } from 'src/app/service/oqituvchi.service';
 import { TalabaService } from 'src/app/service/talaba.service';
-import { environment } from 'src/environment';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-murojaat',
@@ -23,20 +24,21 @@ export class MurojaatComponent implements OnInit {
   public talaba!: Talaba;
   form: FormGroup | any;
   oqituvchilar?: Oqituvchi[];
-  url: string = "http://localhost:8080/api/file/download/";
+  url: string =environment.baseUrl + "file/download/";
   constructor(
     private authService: AuthService,
     private murojaatService: MurojaatService,
     private talabaService: TalabaService,
     private oqituvchiService: OqituvchiService,
-    private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder,
+    private jwtUtil: JwtUtil) {
     this.clear();
   }
 
   ngOnInit(): void {
     this.getCurrrentUser();
     this.getOqituvchilar();
-    this.getMurojaatlar();
+    this.clear();
   }
   send(credentials: any) {
     let m: Murojaat = {
@@ -51,7 +53,6 @@ export class MurojaatComponent implements OnInit {
       holat: MurojaatHolat.ORGANILMOQDA
     };
     if (m.talaba && m.oqituvchi && m.mavzu && m.matn) {
-      this.clear();
       this.murojaatService.create(m).subscribe(
         (data) => {
           this.forAlert = true;
@@ -83,18 +84,20 @@ export class MurojaatComponent implements OnInit {
 
 
   getCurrrentUser() {
-    // this.authService.getCurrentUser()
-    // .subscribe((res: Talaba) => {
-    //   this.talaba = res;
-    //   this.getMurojaatlar();
+    let id = this.jwtUtil.getTalabaHemisId();   
+    this.talabaService.getByHemisId(id.toString()).subscribe(
+      (data) => {
+       this.talaba = data;
+       this.getMurojaatlar(this.talaba.id);
+      }
+    );
+    // this.talabaService.getById(1).subscribe((t: Talaba) => {
+    //   this.talaba = t;
     // });
-    this.talabaService.getById(7).subscribe((t: Talaba) => {
-      this.talaba = t;
-    });
   }
 
-  getMurojaatlar() {
-    this.murojaatService.getAllByTalabaId(7).subscribe(
+  getMurojaatlar(id: any) {
+    this.murojaatService.getAllByTalabaId(id).subscribe(
       (data) => {
         this.dataSource = data;
       },

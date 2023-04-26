@@ -4,6 +4,7 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Murojaat } from 'src/app/model/murojaat';
 import { MurojaatService } from 'src/app/service/murojaat.service';
+import { environment } from 'src/environments/environment';
 import { MurojaatDialogComponent } from '../murojaat-dialog/murojaat-dialog.component';
 
 
@@ -15,6 +16,7 @@ import { MurojaatDialogComponent } from '../murojaat-dialog/murojaat-dialog.comp
 export class MurojaatComponent implements OnInit{
   displayedColumns: string[] = ['id','talaba','mavzu', 'vaqt', 'holat', 'download'];
   dataSource : Murojaat[] | any;
+  url: string =environment.baseUrl + "file/download/";
 
   constructor(private service: MurojaatService,private http:HttpClient, private dialog: MatDialog){  }
 

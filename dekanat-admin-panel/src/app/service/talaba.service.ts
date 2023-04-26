@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environment';
+import { environment } from 'src/environments/environment';
 import { Talaba } from '../model/talaba';
 import { CrudBaseService } from './crud-base.service';
 
@@ -27,6 +27,11 @@ export class TalabaService extends CrudBaseService<Talaba>{
   //   return this.http.post<Talaba>(this.url,t);
   // }
 
-
+  getByHemisId(id: string): Observable<Talaba|any> {
+    
+    return this.http.get<Talaba>(this.url+"/byHemisId/"+id, {
+    });
+    
+  }
 
 }
