@@ -1,4 +1,87 @@
-<app-top-nav></app-top-nav>
+<mat-toolbar color="primary" class="fix-nav">
+  <!-- <button  type="button" mat-icon-button (click)="toggleSidebar()">
+    <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+  </button> -->
+  <div class="nav-brand">
+    {{title}}
+  </div>
+  <span class="nav-spacer"></span>
+
+  <a mat-button routerLink="/" class="tugmaLink menu">Bosh sahifa</a>
+
+
+  <button mat-button routerLink="murojaat" class="menu">Murojaat</button>
+  <!-- <mat-menu #belowMenu="matMenu" yPosition="below">
+    <a mat-menu-item routerLink="murojaat" class="tugmaLink">Barchasi</a>
+    <button mat-menu-item>Yangilar</button>
+  </mat-menu> -->
+
+  <!-- <button mat-button [matMenuTriggerFor]="beforeMenu">Xodimlar</button>
+  <mat-menu #beforeMenu="matMenu" xPosition="before">
+    <button mat-menu-item>O'qituvchilar</button>
+    <button mat-menu-item>Mas'ullar</button>
+  </mat-menu>
+
+
+  <button mat-button [matMenuTriggerFor]="afterMenu">Qo'shimcha</button>
+  <mat-menu #afterMenu="matMenu" xPosition="after">
+    <button mat-menu-item>Item 1</button>
+    <button mat-menu-item>Item 2</button>
+  </mat-menu> -->
+  <!-- <form  class="hidden-sm" style="margin-right: 20px; margin-top: 8px">
+    <mat-form-field style="font-size: 1rem;">
+      <input matInput placeholder="Qidiruv . . .">
+    </mat-form-field>
+  </form> -->
+  <ng-container>
+    <button [matMenuTriggerFor]="profile" mat-icon-button>
+      <mat-icon>account_circle</mat-icon>
+    </button>
+
+
+  </ng-container>
+
+
+
+  <mat-menu #profile="matMenu" [overlapTrigger]="false">
+    <ng-container>
+      <button mat-menu-item routerLink="dashboard">
+        <mat-icon>person</mat-icon>
+        <span>Profil</span>
+      </button>
+
+      <button mat-menu-item>
+        <mat-icon>settings</mat-icon>
+        <span>Sozlamalar</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>exit_to_app</mat-icon>
+        <span>Chiqish</span>
+      </button>
+    </ng-container>
+
+
+  </mat-menu>
+
+
+  <!-- <mat-menu #lavozimlar="matMenu">
+    <button mat-menu-item  [routerLink]="['/managment']" *ngIf="managment">
+      <mat-icon>desktop_windows</mat-icon>
+      <span>Managent</span>
+    </button>
+    <button mat-menu-item   [routerLink]="['/ofitsant']" *ngIf="ofitsant">
+      <mat-icon>room_service</mat-icon>
+      <span>Ofitsant</span>
+    </button>
+    <button mat-menu-item  [routerLink]="['/oshpaz']" *ngIf="oshpaz">
+      <mat-icon>kitchen</mat-icon>
+      <span>Oshpaz</span>
+    </button>
+
+  </mat-menu> -->
+
+</mat-toolbar>
+
 
 <router-outlet></router-outlet>
 

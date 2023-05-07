@@ -8,6 +8,7 @@ import { MaterialModule } from '../material/materialModule';
 import { MurojaatDialogComponent } from './murojaat-dialog/murojaat-dialog.component';
 import { MurojaatService } from '../service/murojaat.service';
 import { FormsModule } from '@angular/forms';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 
@@ -16,7 +17,8 @@ import { FormsModule } from '@angular/forms';
     OqituvchiComponent,
     MurojaatComponent,
     TopNavComponent,
-    MurojaatDialogComponent
+    MurojaatDialogComponent,
+    DashboardComponent
   ],
   imports: [
     CommonModule,

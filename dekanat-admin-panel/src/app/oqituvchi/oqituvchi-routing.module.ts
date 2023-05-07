@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { OqituvchiComponent } from './oqituvchi.component';
 import { MurojaatComponent } from './murojaat/murojaat.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
   {
@@ -11,8 +12,13 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'murojaat',
+        redirectTo: "dashboard",
         pathMatch: 'full'
+      },
+      {
+        path: 'dashboard',
+        component: DashboardComponent,
+
       },
       {
         path: 'murojaat',

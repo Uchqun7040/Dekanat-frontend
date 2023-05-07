@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./oqituvchi.component.css']
 })
 export class OqituvchiComponent {
+  title = 'Elektron dekanat'
 
 }

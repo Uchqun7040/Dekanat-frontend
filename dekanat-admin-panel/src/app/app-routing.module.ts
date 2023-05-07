@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './core/auth-guard.service';
 import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TalabaComponent } from './talaba/talaba.component';
 
@@ -17,10 +16,6 @@ const routes: Routes = [
   //   loadChildren: () =>
   //     import('./auth/auth.module').then((m) => m.AuthModule),
   // },
-  {
-    path: 'login',
-    component: LoginComponent
-  },
   {
     path: 'talaba',
     loadChildren:() =>
