@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../core/auth.service';
 
 @Component({
   selector: 'app-oqituvchi',
@@ -7,5 +8,5 @@ import { Component } from '@angular/core';
 })
 export class OqituvchiComponent {
   title = 'Elektron dekanat'
-
+constructor(public authService : AuthService){}
 }

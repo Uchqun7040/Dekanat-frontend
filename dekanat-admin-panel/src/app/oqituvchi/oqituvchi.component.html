@@ -54,7 +54,7 @@
         <mat-icon>settings</mat-icon>
         <span>Sozlamalar</span>
       </button>
-      <button mat-menu-item>
+      <button mat-menu-item (click)="authService.logout()">
         <mat-icon>exit_to_app</mat-icon>
         <span>Chiqish</span>
       </button>

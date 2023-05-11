@@ -18,9 +18,9 @@ export class TalabaComponent implements OnInit{
     
   }
   ngOnInit(): void {
-    this.authService.getCurrentUser()
-   .subscribe((res: Talaba) => {
-   });
+  //   this.authService.getCurrentUser()
+  //  .subscribe((res: Talaba) => {
+  //  });
   }
 
   // refresh(){

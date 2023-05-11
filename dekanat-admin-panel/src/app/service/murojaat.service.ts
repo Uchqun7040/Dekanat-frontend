@@ -16,17 +16,28 @@ export class MurojaatService extends CrudBaseService<Murojaat>{
     this.url = environment.baseUrl + "murojaat";
    }
 
-   getAllByTalabaId(id: number, force?: boolean, params?: HttpParams): Observable<Murojaat[]> {
+   getAllByTalaba(id: number, force?: boolean, params?: HttpParams): Observable<Murojaat[]> {
     if(force)
-    return this.http.get<Murojaat[]>(this.url+"/getByTalabaId/"+id, {
+    return this.http.get<Murojaat[]>(this.url+"/getByTalaba/"+id, {
       params: params
     });
-    return this.http.get<Murojaat[]>(this.url + "/getByTalabaId/"+id,
+    return this.http.get<Murojaat[]>(this.url + "/getByTalaba/"+id,
       {
         params: params
       }).pipe(
       shareReplay(1)
     );
-  }
-  
+  } 
+   getAllByOqituvchi(id: number, force?: boolean, params?: HttpParams): Observable<Murojaat[]> {
+    if(force)
+    return this.http.get<Murojaat[]>(this.url+"/getByOqituvchi/"+id, {
+      params: params
+    });
+    return this.http.get<Murojaat[]>(this.url + "/getByOqituvchi/"+id,
+      {
+        params: params
+      }).pipe(
+      shareReplay(1)
+    );
+  } 
 }

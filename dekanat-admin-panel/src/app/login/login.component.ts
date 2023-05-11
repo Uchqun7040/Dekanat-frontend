@@ -11,7 +11,7 @@ import { Talaba } from '../model/talaba';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  invalidLogin : boolean | undefined;
+  invalidLogin: boolean | undefined;
   errorMessage: string | undefined;
 
   constructor(
@@ -22,18 +22,34 @@ export class LoginComponent {
 
   signIn(credentials: any) {
     this.authService.login(credentials)
-      .subscribe(result => {        
-        if(result.code === 200){
+      .subscribe(result => {
+        if (result.code === 200) {
           let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
-          this.router.navigate([returnUrl || '/talaba']);
-        
+          this.router.navigate([returnUrl || '/']);
         }
       },
-      (error)=>{
-        this.errorMessage=error.error.error;
-        if(!error.error.error) this.errorMessage= 'Tizimda xatolik!';
-        this.invalidLogin = true;
-      });
-      
+        (error) => {
+          if (error.status === 401) {
+
+            this.authService.loginX(credentials)
+            .subscribe(res => {              
+                let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
+                this.router.navigate([returnUrl || '/']);
+              
+            },
+              (error) => {
+                console.log(error);
+                
+                // this.errorMessage = error.error.error;
+                // if (!error.error.error) this.errorMessage = 'Tizimda xatolik!';
+                // this.invalidLogin = true;
+              });
+          }
+
+          this.errorMessage = error.error.error;
+          if (!error.error.error) this.errorMessage = 'Tizimda xatolik!';
+          this.invalidLogin = true;
+        });
+
   }
 }

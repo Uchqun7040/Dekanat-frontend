@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/auth.service';
 import { JwtUtil } from 'src/app/core/jwt.util';
@@ -31,7 +32,8 @@ export class MurojaatComponent implements OnInit {
     private talabaService: TalabaService,
     private oqituvchiService: OqituvchiService,
     private formBuilder: FormBuilder,
-    private jwtUtil: JwtUtil) {
+    private jwtUtil: JwtUtil,
+    private _snackBar: MatSnackBar) {
     this.clear();
   }
 
@@ -55,8 +57,13 @@ export class MurojaatComponent implements OnInit {
     if (m.talaba && m.oqituvchi && m.mavzu && m.matn) {
       this.murojaatService.create(m).subscribe(
         (data) => {
-          this.forAlert = true;
-          this.ngOnInit();
+          this._snackBar.open("Murojaatingiz muvafaqqiyatli yuborildi!", 'X', {
+            duration: 5000,
+            horizontalPosition: 'center',
+            verticalPosition:'top'
+          });
+          this.clear();
+          this.getMurojaatlar(this.talaba.id);
         }
       );
     }
@@ -65,13 +72,13 @@ export class MurojaatComponent implements OnInit {
 
   clear() {
     this.form = this.formBuilder.group({
-      oqituvchi: [null],
-      mavzu: [null],
-      matn: [null]
+      oqituvchi: [""],
+      mavzu: [""],
+      matn: [""]
     });
   }
   getOqituvchilar() {
-    this.oqituvchiService.getAllList().subscribe(
+    this.oqituvchiService.getAllDekan().subscribe(
       (data) => {
         this.oqituvchilar = data;
       },
@@ -97,7 +104,7 @@ export class MurojaatComponent implements OnInit {
   }
 
   getMurojaatlar(id: any) {
-    this.murojaatService.getAllByTalabaId(id).subscribe(
+    this.murojaatService.getAllByTalaba(id).subscribe(
       (data) => {
         this.dataSource = data;
       },

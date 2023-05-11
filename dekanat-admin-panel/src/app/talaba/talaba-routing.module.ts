@@ -5,6 +5,7 @@ import { TalabaComponent } from './talaba.component';
 import { MurojaatComponent } from './murojaat/murojaat.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from '../login/login.component';
+import { AuthGuard } from '../core/auth-guard.service';
 
 const routes: Routes = [
   {
@@ -17,16 +18,14 @@ const routes: Routes = [
         pathMatch: 'full'
       },
       {
-        path: 'login',
-        component: LoginComponent
-      },
-      {
         path: 'dashboard',
-        component: DashboardComponent
+        component: DashboardComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'murojaat',
-        component: MurojaatComponent
+        component: MurojaatComponent,
+        canActivate: [AuthGuard]
       }
     ]
   }
