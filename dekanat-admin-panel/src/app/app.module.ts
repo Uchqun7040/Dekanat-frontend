@@ -15,6 +15,7 @@ import { AuthService } from './core/auth.service';
 import { JwtInterceptor } from '@auth0/angular-jwt';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HomeComponent } from './home/home.component';
+import { TopNavComponent } from './top-nav/top-nav.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { HomeComponent } from './home/home.component';
     AppComponent,
     LoginComponent,
     PageNotFoundComponent,
-    HomeComponent
+    HomeComponent,
+    TopNavComponent
   ],
   imports: [
     BrowserModule,

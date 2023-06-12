@@ -19,6 +19,7 @@
 }
 #cont{
 	background-image: linear-gradient(to bottom right, rgba(110, 127, 255, 0.526),white,rgba(133, 133, 133, 0.674));
+	overflow-x: hidden;
 }
 .container {
 	display: flex;

@@ -1,5 +1,7 @@
 #container{
   padding: 20px 1%;
+  overflow-x: scroll;
+  overflow-y: scroll;
 }
 
 .demo-table {
@@ -17,7 +19,9 @@
 .ustun{
   text-align: center;
 }
-
+td{
+  text-align: start !important;
+}
 .mat-mdc-row:hover .mat-mdc-cell {
   background-color: rgb(234, 245, 255);
 }
@@ -32,4 +36,8 @@
 
 .download:hover{
   color: white; 
+}
+
+th.mat-sort-header-sorted {
+  color: black;
 }
